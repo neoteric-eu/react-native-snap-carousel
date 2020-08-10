@@ -1061,7 +1061,7 @@ export default class Carousel extends Component {
     _getComponentStaticProps () {
         const { hideCarousel } = this.state;
         const {
-            activeSlideAlignment, CellRendererComponent, containerCustomStyle,
+            CellRendererComponent, containerCustomStyle,
             contentContainerCustomStyle, firstItem, getItemLayout, keyExtractor,
             sliderWidth, sliderHeight, style, useExperimentalSnap, vertical
         } = this.props;
@@ -1086,7 +1086,7 @@ export default class Carousel extends Component {
         };
 
         const contentContainerStyle = [
-            !useExperimentalSnap ? innerMarginStyle : {},
+            innerMarginStyle,
             contentContainerCustomStyle || {}
         ];
 
@@ -1098,7 +1098,6 @@ export default class Carousel extends Component {
         // Recommended only with large slides and `activeSlideAlignment` set to `start` for the time being
         const snapProps = useExperimentalSnap ? {
             // disableIntervalMomentum: true, // Slide ± one item at a time
-            snapToAlignment: activeSlideAlignment,
             snapToInterval: this._getItemMainDimension()
         } : {
             snapToOffsets: this._getSnapOffsets()
